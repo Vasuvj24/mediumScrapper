@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mediumScrapper/static/css/main.4f816bee.css",
+    "main.js": "/mediumScrapper/static/js/main.a306012f.js",
+    "static/js/787.03faea64.chunk.js": "/mediumScrapper/static/js/787.03faea64.chunk.js",
+    "index.html": "/mediumScrapper/index.html",
+    "main.4f816bee.css.map": "/mediumScrapper/static/css/main.4f816bee.css.map",
+    "main.a306012f.js.map": "/mediumScrapper/static/js/main.a306012f.js.map",
+    "787.03faea64.chunk.js.map": "/mediumScrapper/static/js/787.03faea64.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f816bee.css",
+    "static/js/main.a306012f.js"
+  ]
+}
