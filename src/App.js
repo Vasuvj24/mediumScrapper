@@ -1,23 +1,61 @@
-import logo from './logo.svg';
+import { useState } from 'react/cjs/react.development';
 import './App.css';
-
+import Title from './Title';
 function App() {
+  const [loader,setloader]=useState(false)
+  const [clicked, setClicked] = useState(false)
+  const [data, setData] = useState(null);
+  let [rdata, setrdata] = useState();
+  const handleClick = () => {
+    setClicked(true);
+    setloader(true)
+    setrdata();
+    console.log(rdata);
+    fetch("https://scrapperbackend-heroku.herokuapp.com/sendData", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        data: `${data}`
+      })
+    })
+    fetch("https://scrapperbackend-heroku.herokuapp.com/getData", {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        let newData = [];
+        for (let index = 0; index < 10; index++) {
+          newData.push({ title: data.title[index], creator: data.creator[index], blog: data.blog[index], links: data.links[index], tags: data.tags[index], upload: data.upload[index], time: data.time[index] });
+        }
+        setrdata(newData);
+        setloader(false);
+      })
+      .catch(err => console.log(err))
+  }
+  const getData = (e) => {
+    // console.log(e);
+    setData(e.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        Medium <span>Scrapper</span>
+      </h1>
+      <div className="parent">
+        <input type="text" onChange={getData} />
+        <button onClick={handleClick}>Search</button>
+      </div>
+      <div className="displayer">
+      {loader?<div className='pending'>Pending...</div>:null}
+        {rdata ? <Title rdata={rdata} clicked={clicked}></Title> : console.log("no items")}
+      </div>
     </div>
   );
 }
