@@ -8,6 +8,10 @@
     justify-content: center;
     flex-direction: column;
 }
+.recentsparent{
+    display: flex;
+    flex-direction: column;
+}
 .parent-1{
     color: black;
     width: 80%;

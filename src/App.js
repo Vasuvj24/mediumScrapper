@@ -1,10 +1,12 @@
+//VIEW
 import { useState } from 'react/cjs/react.development';
 import './App.css';
 import Title from './Title';
 function App() {
-  const [loader,setloader]=useState(false)
+  const [loader, setloader] = useState(false)
   const [clicked, setClicked] = useState(false)
   const [data, setData] = useState(null);
+  const [recent, setrecent] = useState([])
   let [rdata, setrdata] = useState();
   const handleClick = () => {
     setClicked(true);
@@ -21,26 +23,26 @@ function App() {
         data: `${data}`
       })
     })
-    fetch("https://scrapperbackend-heroku.herokuapp.com/getData", {
+    fetch("https://scrapperbackend-heroku.herokuapp.com/getData",{
       method: 'GET',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       }
-    })
-      .then(res => res.json())
+    }).then(res=>res.json())
       .then(data => {
+        console.log(data);
         let newData = [];
+        setrecent(data.rtab);
         for (let index = 0; index < 10; index++) {
           newData.push({ title: data.title[index], creator: data.creator[index], blog: data.blog[index], links: data.links[index], tags: data.tags[index], upload: data.upload[index], time: data.time[index] });
         }
         setrdata(newData);
         setloader(false);
       })
-      .catch(err => console.log(err))
+      .catch(err=>console.log(err))
   }
   const getData = (e) => {
-    // console.log(e);
     setData(e.target.value);
   }
   return (
@@ -52,8 +54,23 @@ function App() {
         <input type="text" onChange={getData} />
         <button onClick={handleClick}>Search</button>
       </div>
+      {
+        recent ? <div className='recentSearches'>
+          History
+          {
+            <div className='recentschild'>
+              {
+                recent.map(each => 
+                {
+                  return <div className='recents'>{each.recent}</div>
+                }
+                )
+              }
+            </div>
+          }</div> : console.log("nothing in recent")
+      }
       <div className="displayer">
-      {loader?<div className='pending'>Pending...</div>:null}
+        {loader ? <div className='pending'>Pending...</div> : null}
         {rdata ? <Title rdata={rdata} clicked={clicked}></Title> : console.log("no items")}
       </div>
     </div>

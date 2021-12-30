@@ -36,6 +36,19 @@
       justify-content: center;
       flex-direction: row;
     }
+    .recentschild{
+      display: flex;
+      flex-direction: row;
+    }
+    .recentSearches{
+      color: white;
+      font-size: 4vmin;
+      font-weight: 700;
+      display: flex;
+      align-items: center ;
+      flex-direction: column;
+      margin: 2vmin;
+    }
     .pending{
       color: white;
     }
@@ -64,6 +77,17 @@
       border-radius: 5px;
       background-color: black;
       color: white;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+    .recents{
+      font-size: 2.5vmin;
+      width: 10vmin;
+      height: 5vmin;
+      border: 2px solid white;
+      border-radius: 5px;
+      background-color: white;
+      color: black;
       text-align: center;
       transition: all 0.2s ease-in-out;
     }
