@@ -14,12 +14,11 @@
       align-items: center;
       justify-content: center;
       color: #f5f5f5;
-      font-size: 50px;
+      font-size: 8vmin;
       font-weight: bold;
       font-family: monospace;
-      letter-spacing: 7px;
+      letter-spacing: 5px;
       cursor: pointer;
-      margin-left: 50px;
     }
     h1 span{
       transition: .5s linear;
