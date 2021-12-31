@@ -13,7 +13,7 @@ function Title({ rdata,clicked }) {
                                 {
                                     each.links[0]==='/'?each.links="https://medium.com"+each.links:console.log("nothing happended")
                                 }
-                                <a href={each.links} target={'_blank'}>{each.title}</a>
+                                <a href={each.links} target={'_blank'} rel="noreferrer">{each.title}</a>
                                 
                                 {/* <a className='title' href={each.links}>{each.title}</a> */}
                             </div>

@@ -62,7 +62,7 @@ function App() {
               {
                 recent.map(each => 
                 {
-                  return <div className='recents'>{each.recent}</div>
+                  return <a href={`https://medium.com/tag/${each.recent}/latest`} target={'_blank'} rel="noreferrer" className='recents'>{each.recent}</a>
                 }
                 )
               }
@@ -70,7 +70,7 @@ function App() {
           }</div> : console.log("nothing in recent")
       }
       <div className="displayer">
-        {loader ? <div className='pending'>Pending...</div> : null}
+        {loader ? <div className='pending'>Loading...</div> : null}
         {rdata ? <Title rdata={rdata} clicked={clicked}></Title> : console.log("no items")}
       </div>
     </div>

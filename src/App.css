@@ -69,7 +69,8 @@
     color: black;
     background-color: white
     }
-    .parent button{
+    .parent button,.recents{
+      margin: 0.5vmin;
       font-size: 2.5vmin;
       width: 10vmin;
       height: 5vmin;
@@ -80,18 +81,7 @@
       text-align: center;
       transition: all 0.2s ease-in-out;
     }
-    .recents{
-      font-size: 2.5vmin;
-      width: 10vmin;
-      height: 5vmin;
-      border: 2px solid white;
-      border-radius: 5px;
-      background-color: white;
-      color: black;
-      text-align: center;
-      transition: all 0.2s ease-in-out;
-    }
-    .parent button:hover{
+    .parent button:hover,.recents:hover{
       cursor: pointer;
       background-color: white;
       color: black;
