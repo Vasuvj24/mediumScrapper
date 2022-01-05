@@ -6,7 +6,7 @@ function Title({ rdata,clicked }) {
         <div>
             <div className="parent">
                 {
-                    rdata.map(each => {
+                    rdata&& rdata.map(each => {
                         return <div className='parent-1'>
                             <div className="parent-2">
                                 <h5>{each.creator}</h5>

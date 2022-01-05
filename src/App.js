@@ -34,7 +34,7 @@ function App() {
         console.log(data);
         let newData = [];
         setrecent(data.rtab);
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < data.links.length; index++) {
           newData.push({ title: data.title[index], creator: data.creator[index], blog: data.blog[index], links: data.links[index], tags: data.tags[index], upload: data.upload[index], time: data.time[index] });
         }
         setrdata(newData);
